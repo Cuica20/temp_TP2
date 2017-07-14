@@ -1,0 +1,8 @@
+svg .seat:hover{
+    fill: red;
+    cursor:pointer;
+}
+
+/*svg:hover #blob{
+  fill: blue;
+}*/

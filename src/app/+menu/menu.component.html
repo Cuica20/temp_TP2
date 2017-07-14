@@ -1,0 +1,17 @@
+<div class="menu-creator">
+    <div class="menu-creator__title">
+        <h1>
+            <img src="assets/img/pollo.svg">
+            Poller&iacute;a Pardos Chicken
+        </h1>
+    </div>
+    <div class="menu-creator__panes">
+        <menu-form
+                [toppings]="toppings$ | async"
+                (add)="addMenu($event)">
+        </menu-form>
+        <menu-list
+                [menus]="menus$ | async">
+        </menu-list>
+    </div>
+</div>

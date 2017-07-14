@@ -1,0 +1,110 @@
+<div id="content" class="search-view">
+    <div class="reserva-creator">
+        <div class="reserva-creator__title">
+            <h1>
+                <img src="assets/img/pollo.svg">
+                Poller&iacute;a Pardos Chicken
+            </h1>
+        </div>
+        <div class="reserva-creator">
+            <!-- widget content -->
+            <div class="widget-body">
+                <div id="order-form" class="smart-form">
+                    <fieldset>
+                        <div class="row">
+                            <section class="col col-2">
+                                <label class="input"> <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="dni" placeholder="DNI" [(ngModel)]="mesaDto.dni"/>
+                                </label>
+                            </section>
+                            <section class="col col-3">
+                                <label class="input"> <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="nombres" placeholder="Nombres" [(ngModel)]="mesaDto.nombre"/>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="input"> <i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="apellido" placeholder="Apellido" [(ngModel)]="mesaDto.apellido"/>
+                                </label>
+                            </section>
+                            <section class="col col-3">
+                                <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+                                    <input type="email" name="correo" placeholder="Correo" [(ngModel)]="mesaDto.correo"/>
+                                </label>
+                            </section>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-2">
+                                <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text" name="fecha" placeholder="Fecha" [(ngModel)]="mesaDto.fecha"/>
+                                </label>
+                            </section>
+                            <section class="col col-3">
+                                <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
+                                    <input type="text" name="local" placeholder="Local" [(ngModel)]="mesaDto.local"/>
+                                </label>
+                            </section>
+                            <section class="col col-2">
+                                <label class="input"> <i class="icon-append fa fa-clock-o"></i>
+                                    <input type="text" name="hora" placeholder="Hora" [(ngModel)]="mesaDto.hora"/>
+                                </label>
+                            </section>
+
+                            <section class="col col-2">
+                                <label class="input"> <i class="icon-append fa fa-phone"></i>
+                                    <input type="tel" name="phone" placeholder="Tel&eacute;fono" saMaskedInput="(999) 999-9999" [(ngModel)]="mesaDto.telefono" />
+                                </label>
+                            </section>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-2">
+                                <label class="input"> <i class="icon-append fa fa-money"></i>
+                                    <input type="text" name="cantidad" placeholder="Cantidad" [(ngModel)]="mesaDto.cantidad" />
+                                </label>
+                            </section>
+                            <section class="col col-2">
+                                <label class="input">
+                                    <input type="text" name="mesa" placeholder="Mesa" [(ngModel)]="mesaDto.mesa" />
+                                </label>
+                            </section>
+                            <div class="col col-5">
+                                <button type="submit" (click)="verDisponibiliddadMesa()" class="btn btn-lg btn-primary">
+                                    Ver Disponibilidad de mesa
+                                </button>
+                                <button type="submit" class="btn btn-lg btn-primary">
+                                    Pedido
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <section class="col col-12">
+                                <label>Comentario</label>
+                                <label class="input">
+                                <textarea rows="4" cols="100">
+                                </textarea>
+                                </label>
+                            </section>
+                        </div>
+                        <div class="row">
+                            <section class="col col-2">
+                                <label class="label-dummy">&nbsp;</label>
+                                <button type="submit" class="btn btn-lg btn-primary" (click)="guardarReserva()">
+                                    Guardar
+                                </button>
+                            </section>
+                            <section class="col col-2">
+                                <label class="label-dummy">&nbsp;</label>
+                                <button type="submit" class="btn btn-lg btn-primary" (click)="cancelarReserva()">
+                                    Cancelar
+                                </button>
+                            </section>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

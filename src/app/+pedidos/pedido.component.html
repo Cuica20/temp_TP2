@@ -1,0 +1,81 @@
+<div id="content" class="search-view">
+    <div class="pedido-creator">
+        <div class="pedido-creator__title">
+            <h1>
+                <img src="assets/img/pollo.svg">
+                Poller&iacute;a Pardos Chicken
+            </h1>
+        </div>
+        <div class="smart-form">
+            <div class="col col-6">
+                <label>Buscar</label>
+                <label class="input">
+                    <input type="text"
+                           placeholder="Lista de pedidos">
+                </label>
+            </div>
+            <div class="col col-6">
+                <label class="label-dummy">&nbsp;</label>
+                <button type="submit" class="btn btn-lg btn-primary" (click)="onSearch()">
+                    Buscar
+                </button>
+            </div>
+            <div class="col col-6">
+                <label></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="pedido-creator">
+        <div class="col col-6">
+            <label></label>
+        </div>
+            <div class="widget-body">
+                    <!--<kendo-grid
+                            [data]="gridView"
+                            [pageSize]="pageSize"
+                            [skip]="skip"
+                            [pageable]="true"
+                    >
+
+                        <kendo-grid-column field="idPedido" title="ID Pedido" width="250"></kendo-grid-column>
+                        <kendo-grid-column field="cliente" title="Cliente" width="240"></kendo-grid-column>
+                        <kendo-grid-column field="pedido" title="Pedido" width="100"></kendo-grid-column>
+                        <kendo-grid-column field="direccion" title="Direcci&oacute;n" width="180"></kendo-grid-column>
+                        <kendo-grid-column field="horaLlegada" title="Hora Llegada Aproximada" width="220"></kendo-grid-column>
+                    </kendo-grid>-->
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>ID Pedido</th>
+                            <th>Cliente</th>
+                            <th>Pedido</th>
+                            <th>Direcci&oacute;n</th>
+                            <th>Hora Llegada Aproximada</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Juan</td>
+                            <td>Pollo a la Brasa 1/4</td>
+                            <td>Av. Angamos 154</td>
+                            <td>9:00 pm</td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <td>2</td>
+                            <td>Javier</td>
+                            <td>Pollo a la Brasa 1/2</td>
+                            <td>Av. Angamos 7862</td>
+                            <td>8:00 pm</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+</div>
