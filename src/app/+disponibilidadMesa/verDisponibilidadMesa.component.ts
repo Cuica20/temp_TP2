@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
+import {ReservaResult} from "../dto/reservaResult";
 /**
  * Created by javier on 7/13/17.
  */
@@ -12,6 +13,9 @@ declare var $:any;
     styleUrls: ['./verDisponibilidadMesa.component.css']
 })
 export class VerDisponibilidadComponent implements OnInit {
+
+    meetingList = ['a', 'b', 'c'];
+    public reservaResult: ReservaResult[] = [];
 
     constructor(private _router: Router) { }
 

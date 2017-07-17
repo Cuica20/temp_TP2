@@ -6,3 +6,6 @@ svg .seat:hover{
 /*svg:hover #blob{
   fill: blue;
 }*/
+
+.even { color: red; }
+.odd { color: green; }

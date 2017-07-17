@@ -1,105 +1,110 @@
-<div id="content" class="search-view">
-    <div class="consulta-creator">
-        <div class="consulta-creator__title">
-            <h1>
-                <img src="assets/img/pollo.svg">
-                Poller&iacute;a Pardos Chicken
-            </h1>
-        </div>
-        <div class="smart-form">
-            <label class="label-dummy">Consultar Reservas</label>
-            <label class="label-dummy">&nbsp;</label>
-            <section class="col col-2">
-                <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                    <input type="text" name="fechaInicio" placeholder="Fecha Inicio"/>
-                </label>
-            </section>
-            <section class="col col-2">
-                <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                    <input type="text" name="fechaFin" placeholder="Fecha Fin"/>
-                </label>
-            </section>
+<p-growl [(value)]="msgs"></p-growl>
+<div class="consulta-creator">
+    <div class="consulta-creator__title">
+        <h1>
+            <img src="assets/img/pollo.svg">
+            Poller&iacute;a Pardos Chicken
+        </h1>
+    </div>
+    <div class="smart-form">
+
+        <div class="row">
             <section class="col col-3">
                 <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
-                    <input type="text" name="local" placeholder="Local"/>
+                    <input type="text" name="local" placeholder="Local" [(ngModel)]="reservafilter.cod_local"/>
                 </label>
             </section>
-            <div class="col col-3">
+            <section class="col col-2">
+                <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                    <input type="text" name="fechaInicio" placeholder="Fecha Inicio" [(ngModel)]="reservafilter.fechaInicio"/>
+                </label>
+            </section>
+            <section class="col col-2">
+                <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                    <input type="text" name="fechaFin" placeholder="Fecha Fin" [(ngModel)]="reservafilter.fechaFin"/>
+                </label>
+            </section>
+            <section class="col col-2">
+                <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
+                    <input type="text" name="tipoReserva" placeholder="Tipo Reserva" [(ngModel)]="reservafilter.tipo_reserva"/>
+                </label>
+            </section>
+        </div>
+        <div class="row">
+            <section class="col col-3">
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+                    <input type="text" name="apellidos" placeholder="Apellidos" [(ngModel)]="reservafilter.ap_paterno"/>
+                </label>
+            </section>
+            <section class="col col-2">
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+                    <input type="text" name="nombres" placeholder="Nombres" [(ngModel)]="reservafilter.nombre"/>
+                </label>
+            </section>
+            <section class="col col-4">
                 <button type="submit" class="btn btn-lg btn-primary">
                     Buscar
                 </button>
                 <button type="submit" class="btn btn-lg btn-primary" (click)="nuevaReserva()">
                     Nueva Reserva
                 </button>
-            </div>
-            <div class="col col-6">
-                <label></label>
-            </div>
+            </section>
         </div>
     </div>
-    <div class="consulta-creator">
-        <div class="col col-6">
-            <label></label>
-        </div>
-        <div class="widget-body">
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>C&oacute;digo</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Local</th>
-                        <th>Cantidad de Persona</th>
-                        <th>Persona que reserv&oacute;</th>
-                        <th>Tipo de Reserva</th>
-                        <th>Estado</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <a (click)="irDetalle()">1-89891818</a>
-                        </td>
-                        <td>15/06/2017</td>
-                        <td>13:00</td>
-                        <td>Av. Angamos 154 - San Borja</td>
-                        <td>20</td>
-                        <td>Fulano x</td>
-                        <td>Normal</td>
-                        <td>Pendiente</td>
-                    </tr>
-                    </tbody>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <a (click)="irDetalle()">2-79182635</a>
-                        </td>
-                        <td>12/06/2017</td>
-                        <td>13:00</td>
-                        <td>Av. Domingo 1534 - San Isidro</td>
-                        <td>30</td>
-                        <td>Fulano y</td>
-                        <td>Normal</td>
-                        <td>Pagado</td>
-                    </tr>
-                    </tbody>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <a (click)="irDetalle()">3-47487919</a>
-                        </td>
-                        <td>14/07/2017</td>
-                        <td>19:00</td>
-                        <td>Av. Aviaci&oacute;n con San Borja Sur</td>
-                        <td>10</td>
-                        <td>Javier Cuicapuza</td>
-                        <td>Normal</td>
-                        <td>Pendiente</td>
-                    </tr>
-                    </tbody>
-                </table>
+    <div id="content" class="search-view">
+        <div class="consulta-creator">
+            <div class="smart-form">
+                <div class="row">
+                    <div class="col col-6">
+                        <label></label>
+                        <label>Resultado: {{reservaResult.length}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="widget-body">
+                        <div class="table-responsive col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>C&oacute;digo</th>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                    <th>Local</th>
+                                    <th>Cantidad de Persona</th>
+                                    <th>Persona que reserv&oacute;</th>
+                                    <th>Tipo de Reserva</th>
+                                    <th>Estado</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let asset of reservaResult">
+                                    <td class="text-center" width="40">
+                                        <a href="javascript:void(0)" class="link" (click)="irDetalle(asset)">
+                                            <span class="fa fa-pencil"></span></a>
+                                    </td>
+                                    <td class="text-center" width="40">
+                                        <a href="javascript:void(0)" class="link" (click)="anularReserva(asset)">
+                                            <span class="fa fa-trash"></span></a>
+                                    </td>
+                                    <td>{{asset.dni}}</td>
+                                    <td>{{asset.fecha}}</td>
+                                    <td>{{asset.hora}}</td>
+                                    <td>{{asset.local}}</td>
+                                    <td>{{asset.cantidad}}</td>
+                                    <td>{{asset.nombre}}</td>
+                                    <td>{{asset.tipoReserva}}</td>
+                                    <td>{{asset.estado}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <p-confirmDialog header="Confirmaci&oacute;n" icon="fa fa-question-circle" width="425"></p-confirmDialog>
     </div>
 </div>
+

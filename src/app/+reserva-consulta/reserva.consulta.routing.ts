@@ -10,7 +10,7 @@ export const reservaConsultaRoutes: Routes = [
         path: '',
         component: ReservaConsultaComponent,
         data: {
-            pageTitle: 'ReservaConsulta'
+            pageTitle: 'Gesti\u00f3n de Atenci\u00f3n al Cliente'
         }
     }
 ];

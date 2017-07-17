@@ -3,6 +3,10 @@
  */
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {ReservaResult} from "../dto/reservaResult";
+import {ConfirmationService, Message} from "primeng/primeng";
+import {ReservaFilter} from "../dto/ReservaFilter";
+import {AppService} from "../service/app.service";
 
 @Component({
     selector: 'app-reserva-consulta',
@@ -11,11 +15,43 @@ import {Router} from "@angular/router";
 })
 export class ReservaConsultaComponent implements OnInit {
 
-    constructor(private router: Router) { }
+    public reservaResult: ReservaResult[] = [];
 
-    ngOnInit() {}
+    msgs: Message[] = [];
+    reservafilter: ReservaFilter = new ReservaFilter();
 
-    onSearch(){
+
+    constructor(private router: Router, private appService: AppService,private confirmationService: ConfirmationService) { }
+
+    ngOnInit() {
+        this.getReserva();
+    }
+
+    getReserva(){
+        this.appService.getReservaConsulta(this.reservafilter).subscribe(
+            (data:any) => {
+                this.reservaResult = data;
+            },
+            error => {
+                this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});
+            }
+        );
+    }
+    anularReserva(dataItem: any){
+        this.confirmationService.confirm({
+            message: 'Desea Anular la Reserva?',
+            accept: () => {
+                this.appService.anularReserva(dataItem).subscribe(
+                    (data: any) => {
+                        this.getReserva();
+                        this.msgs.push({severity:'success', summary:'Success Message', detail:'Reserva Anulada'});
+                    },
+                    error => {
+                        this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});
+                    }
+                );
+            }
+        });
 
     }
 
@@ -23,8 +59,10 @@ export class ReservaConsultaComponent implements OnInit {
         this.router.navigate(['/reserva']);
     }
 
-    irDetalle(){
+    irDetalle(data: ReservaResult){
 
+        sessionStorage.setItem('idDetalleReserva',data.cod_reserva);
+        this.router.navigate(['/reserva']);
     }
 
 }
