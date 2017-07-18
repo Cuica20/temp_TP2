@@ -93,3 +93,11 @@ nav ul li a {
 nav ul li a:hover {
     color: #C3D7DF;
 }
+
+.red_table {
+    color: red;
+}
+
+.black_table {
+    color: black;
+}

@@ -1,11 +1,5 @@
 <div id="content" class="search-view">
-    <h2>Hello {{name}}</h2>
-    <div *ngFor="let meeting of meetingList; let index=index; let odd=odd; let even=even;"
-         class="row"
-         [ngClass]="{ odd: odd, even: even }">{{meeting}}
-        <div class="col"></div>
-        <div class="col"></div>
-    </div>
+    <h2>Disponibilidad de mesas</h2>
 
     <div class="row">
         <div class="widget-body">
@@ -13,20 +7,21 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th>Col1</th>
-                        <th>Col1</th>
-                        <th>Puerta</th>
-                        <th>Col1</th>
-                        <th>Col1</th>
+                        <th></th>
+                        <th>Mesas</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let asset of mesaResult; let index=index; let odd=odd; let even=even;" [ngClass]="{ odd: odd, even: even }">
-                        <td>{{asset.disponibilidad}}</td>
-                        <td>{{asset.disponibilidad}}</td>
-                        <td>{{asset.disponibilidad}}</td>
-                        <td>{{asset.disponibilidad}}</td>
-                        <td>{{asset.disponibilidad}}</td>
+                    <tr *ngFor="let asset of mesaResult, let i=index, let last=last, let odd=odd, let even=even">
+                        <td>
+                        </td>
+                        <td>
+                            <button [ngClass]="{disponible_table : asset.disponibilidad, no_disponible_table: !asset.disponibilidad}"
+                                    (click)="selectedTable(asset)">{{asset.cod_mesa}}</button>
+                        </td>
+                        <td>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

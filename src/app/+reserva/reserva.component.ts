@@ -17,14 +17,15 @@ export class ReservaComponent implements OnInit,OnDestroy {
 
     msgs: Message[] = [];
     reservaResult: Reserva = new Reserva();
+    mesaSeleccionada: Mesa = new Mesa();
     display: boolean = false;
+    public mesaResult: Mesa[] = [];
 
   constructor(private _router: Router,
               private appService: AppService,
               private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
-
 
       let dniObject = JSON.parse(sessionStorage.getItem('idDetalleReserva'));
       if(dniObject !=null){
@@ -33,8 +34,28 @@ export class ReservaComponent implements OnInit,OnDestroy {
           this.reservaResult = new Reserva();
           this.reservaResult.tipo_reserva = 'Normal';
           this.reservaResult.nombre_local = 'Angamos';
+          this.mesaShow();
       }
+
+
   }
+
+  mesaShow(){
+     this.getMesaDisponibles('99999999');
+  }
+  getMesaDisponibles(data: any){
+        this.appService.getDisponibilidadMesas(data).subscribe(
+            (data:any) => {
+                this.mesaResult = data;
+            },
+            error => {
+                /*this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});*/
+            }
+        );
+  }
+    selectedTable(dataItem: any){
+        this.reservaResult.cod_mesa = dataItem.cod_mesa;
+    }
 
   obtenerReservaById(code: any){
 
@@ -49,21 +70,21 @@ export class ReservaComponent implements OnInit,OnDestroy {
   }
 
   verDisponibiliddadMesa(){
-      sessionStorage.setItem('objectSession',JSON.stringify(this.reservaResult));
-      this._router.navigate(['/verDisponibilidadMesa']);
   }
 
   showDetailReserva(data: Reserva){
       this.reservaResult = data;
+      this.getMesaDisponibles(this.reservaResult.dni);
   }
 
     ngOnDestroy(): void {
-      sessionStorage.removeItem('idDetalleReserva');
+      /*sessionStorage.removeItem('idDetalleReserva');*/
     }
 
     cancelarReserva(){
         sessionStorage.setItem('objectSession',null);
         sessionStorage.setItem('mesaSeleccionada','');
+        sessionStorage.setItem('mesaSeleccionadaID','');
         this._router.navigate(['/reservaConsulta']);
     }
 

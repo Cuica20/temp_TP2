@@ -4,9 +4,10 @@
 export class Mesa {
     constructor(
         public cod_mesa?: string,
-        public disponibilidad?: string,
-        public fecha_actual?: string,
-        public tipo_mesa?: string
+        public disponibilidad?: boolean,
+        public ambiente?: string,
+        public sugerencia?: string,
+        public reservado_dni?: boolean
 
     ) {
     }

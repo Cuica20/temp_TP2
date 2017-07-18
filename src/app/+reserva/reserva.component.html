@@ -83,12 +83,31 @@
                         </div>
 
                         <div class="row">
-                            <section class="col col-12">
+                            <section class="col col-4">
                                 <label>Comentario</label>
                                 <label class="input">
-                                <textarea rows="4" cols="100" [(ngModel)]="reservaResult.comentario">
+                                <textarea rows="4" cols="50" [(ngModel)]="reservaResult.comentario">
                                 </textarea>
                                 </label>
+                            </section>
+                            <section class="table-responsive col-md-6">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Mesas</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let asset of mesaResult, let i=index, let last=last, let odd=odd, let even=even">
+
+                                        <td>
+                                            <button [ngClass]="{disponible_table : asset.disponibilidad, no_disponible_table: !asset.disponibilidad}"
+                                                    [disabled]="!asset.disponibilidad" (click)="selectedTable(asset)">{{asset.cod_mesa}}</button>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </section>
                         </div>
                         <div class="row" *ngIf="reservaResult.estado == 'Confirmado' || reservaResult.estado == null">
