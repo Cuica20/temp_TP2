@@ -13,36 +13,20 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th>C&oacute;digo</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Local</th>
-                        <th>Cantidad de Persona</th>
-                        <th>Persona que reserv&oacute;</th>
-                        <th>Tipo de Reserva</th>
-                        <th>Estado</th>
+                        <th>Col1</th>
+                        <th>Col1</th>
+                        <th>Puerta</th>
+                        <th>Col1</th>
+                        <th>Col1</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let asset of reservaResult; let index=index; let odd=odd; let even=even;" [ngClass]="{ odd: odd, even: even }">
-                        <td class="text-center" width="40">
-                            <a href="javascript:void(0)" class="link" (click)="irDetalle(asset)">
-                                <span class="fa fa-pencil"></span></a>
-                        </td>
-                        <td class="text-center" width="40">
-                            <a href="javascript:void(0)" class="link" (click)="anularReserva(asset)">
-                                <span class="fa fa-trash"></span></a>
-                        </td>
-                        <td>{{asset.dni}}</td>
-                        <td>{{asset.fecha}}</td>
-                        <td>{{asset.hora}}</td>
-                        <td>{{asset.local}}</td>
-                        <td>{{asset.cantidad}}</td>
-                        <td>{{asset.nombre}}</td>
-                        <td>{{asset.tipoReserva}}</td>
-                        <td>{{asset.estado}}</td>
+                    <tr *ngFor="let asset of mesaResult; let index=index; let odd=odd; let even=even;" [ngClass]="{ odd: odd, even: even }">
+                        <td>{{asset.disponibilidad}}</td>
+                        <td>{{asset.disponibilidad}}</td>
+                        <td>{{asset.disponibilidad}}</td>
+                        <td>{{asset.disponibilidad}}</td>
+                        <td>{{asset.disponibilidad}}</td>
                     </tr>
                     </tbody>
                 </table>

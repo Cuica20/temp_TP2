@@ -3,6 +3,9 @@ import {Router} from "@angular/router";
 import {ReservaResult} from "../dto/reservaResult";
 import {AppService} from "../service/app.service";
 import {ConfirmationService, Message} from "primeng/primeng";
+import {Reserva} from "../dto/Reserva";
+import {Cliente} from "../dto/Cliente";
+import {Mesa} from "../dto/Mesa";
 
 @Component({
   selector: 'app-reserva',
@@ -13,27 +16,34 @@ import {ConfirmationService, Message} from "primeng/primeng";
 export class ReservaComponent implements OnInit,OnDestroy {
 
     msgs: Message[] = [];
-    reservaResult: ReservaResult = new ReservaResult();
+    reservaResult: Reserva = new Reserva();
+    display: boolean = false;
 
-  constructor(private _router: Router, private appService: AppService,private confirmationService: ConfirmationService) { }
+  constructor(private _router: Router,
+              private appService: AppService,
+              private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
 
-      let dniObject = JSON.parse(sessionStorage.getItem('editPermisoEmpleadoResult'));
+
+      let dniObject = JSON.parse(sessionStorage.getItem('idDetalleReserva'));
       if(dniObject !=null){
           this.obtenerReservaById(dniObject);
+      }else{
+          this.reservaResult = new Reserva();
+          this.reservaResult.tipo_reserva = 'Normal';
+          this.reservaResult.nombre_local = 'Angamos';
       }
-
-      /*this.reservaResult.mesa = sessionStorage.getItem('mesaSeleccionada');*/
   }
 
-  obtenerReservaById(code: string){
+  obtenerReservaById(code: any){
+
       this.appService.getReservaByCode(code).subscribe(
           data => {
               this.showDetailReserva(data);
           },
           error => {
-              this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});
+              /*this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});*/
           }
       );
   }
@@ -43,7 +53,7 @@ export class ReservaComponent implements OnInit,OnDestroy {
       this._router.navigate(['/verDisponibilidadMesa']);
   }
 
-  showDetailReserva(data: any){
+  showDetailReserva(data: Reserva){
       this.reservaResult = data;
   }
 
@@ -58,20 +68,77 @@ export class ReservaComponent implements OnInit,OnDestroy {
     }
 
     guardarReserva(){
-        this._router.navigate(['/reservaConsulta']);
+        debugger;
+        if(this.reservaResult.cod_reserva != null){
+            this.appService.actualizarReserva(this.reservaResult).subscribe(
+                (data:any) => {
+                    if (data.codigo == 1) {
+                        this.msgs.push({severity:'success', summary:'Success Message', detail:'Reserva actualizada'});
+                        setTimeout(() => {
+                            this._router.navigate(['/reservaConsulta']);
+                        }, 4000);
+                    }
+                },
+                error => {
+                }
+            );
+        }else{
+            this.appService.registrarReserva(this.reservaResult).subscribe(
+                (data:any) => {
+                    if (data.codigo == 1) {
+                        this.msgs.push({severity:'success', summary:'Success Message', detail:'Reserva registrada'});
+                        setTimeout(() => {
+                            this._router.navigate(['/reservaConsulta']);
+                        }, 4000);
+                    }
+                },
+                error => {
+                }
+            );
+        }
+
     }
 
-    showMessageSuggest(){
-        /*if(this.reservaResult. == '47487919')
-            alert('Estimado Javier Cuicapuza desea elegir la misma mesa de siempre?');
-        this.mesaDto.mesa = 'E-4';*/
-
-        this.confirmationService.confirm({
-            message: 'Estimado'+'Javier'+'desea elegir la misma mesa de siempre?',
-            accept: () => {
-                //Actual logic to perform a confirmation
+    showMessageSuggest($event){
+        if ($event.target.value.length == 8) {
+            if(this.reservaResult.estado == null){
+                this.appService.obtenerInformacionClienteByDNI(this.reservaResult.dni).subscribe(
+                    (data:Cliente) => {
+                        this.dataCliente(data);
+                    },
+                    error => {
+                    }
+                );
             }
-        });
+        }
+    }
+
+
+    dataCliente(data: Cliente){
+        if(data.dni == null){
+            this.display = false;
+        }else{
+            this.display = true;
+            this.reservaResult = data;
+            this.reservaResult.tipo_reserva = 'Normal';
+            this.reservaResult.nombre_local = 'Angamos';
+        }
+
+
+    }
+
+    yesQuestion(){
+        this.display = false;
+        this.appService.obtenerUltimaReservaClienteByDNI(this.reservaResult.dni).subscribe(
+            (data:Mesa) => {
+                this.reservaResult.cod_mesa = data.cod_mesa;
+            },
+            error => {
+            }
+        );
+    }
+    noQuestion(){
+        this.display = false;
     }
 
 }

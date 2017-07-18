@@ -11,7 +11,7 @@
         <div class="row">
             <section class="col col-3">
                 <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
-                    <input type="text" name="local" placeholder="Local" [(ngModel)]="reservafilter.cod_local"/>
+                    <input type="text" name="local" placeholder="Local" [(ngModel)]="reservafilter.nombre_local"/>
                 </label>
             </section>
             <section class="col col-2">
@@ -42,7 +42,7 @@
                 </label>
             </section>
             <section class="col col-4">
-                <button type="submit" class="btn btn-lg btn-primary">
+                <button type="submit" class="btn btn-lg btn-primary" (click)="busquedaReserva()">
                     Buscar
                 </button>
                 <button type="submit" class="btn btn-lg btn-primary" (click)="nuevaReserva()">
@@ -88,13 +88,13 @@
                                         <a href="javascript:void(0)" class="link" (click)="anularReserva(asset)">
                                             <span class="fa fa-trash"></span></a>
                                     </td>
-                                    <td>{{asset.dni}}</td>
-                                    <td>{{asset.fecha}}</td>
+                                    <td>{{asset.cod_reserva}}</td>
+                                    <td>{{asset.fecha_reserva}}</td>
                                     <td>{{asset.hora}}</td>
-                                    <td>{{asset.local}}</td>
-                                    <td>{{asset.cantidad}}</td>
-                                    <td>{{asset.nombre}}</td>
-                                    <td>{{asset.tipoReserva}}</td>
+                                    <td>{{asset.nombre_local}}</td>
+                                    <td>{{asset.cantidad_personas}}</td>
+                                    <td>{{asset.nombre_cliente}}</td>
+                                    <td>{{asset.tipo_reserva}}</td>
                                     <td>{{asset.estado}}</td>
                                 </tr>
                                 </tbody>

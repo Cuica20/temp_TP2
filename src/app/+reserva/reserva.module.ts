@@ -6,12 +6,15 @@ import { CommonModule } from '@angular/common';
 import {reservaRouting} from "./reserva.routing";
 import {ReservaComponent} from "./reserva.component";
 import {FormsModule} from "@angular/forms";
-import {ConfirmDialogModule,ConfirmationService} from 'primeng/primeng';
+import {ConfirmDialogModule, ConfirmationService, GrowlModule} from 'primeng/primeng';
+import {DialogModule} from 'primeng/primeng';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        GrowlModule,
+        DialogModule,
         ConfirmDialogModule,
         reservaRouting
     ],

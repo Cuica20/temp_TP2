@@ -2,27 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="529d6f39-7a3d-4ed6-b9a7-8f069c2910c6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dto/ReservaFilter.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dto/reservaResult.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/service/app.service.ts" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/dto/reservaDto.ts" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dto/Cliente.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dto/Mesa.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dto/Reserva.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dto/notificacionresult.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/jquery/package.json" afterPath="$PROJECT_DIR$/node_modules/jquery/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.css" afterPath="$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.html" afterPath="$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.ts" afterPath="$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.html" afterPath="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.ts" afterPath="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.module.ts" afterPath="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.routing.ts" afterPath="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.routing.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/+reserva/reserva.component.html" afterPath="$PROJECT_DIR$/src/app/+reserva/reserva.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/+reserva/reserva.component.ts" afterPath="$PROJECT_DIR$/src/app/+reserva/reserva.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/+reserva/reserva.module.ts" afterPath="$PROJECT_DIR$/src/app/+reserva/reserva.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/layout/navigation/navigation.component.html" afterPath="$PROJECT_DIR$/src/app/shared/layout/navigation/navigation.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/environments/environment.ts" afterPath="$PROJECT_DIR$/src/environments/environment.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/dto/ReservaFilter.ts" afterPath="$PROJECT_DIR$/src/app/dto/ReservaFilter.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/dto/reservaResult.ts" afterPath="$PROJECT_DIR$/src/app/dto/reservaResult.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/service/app.service.ts" afterPath="$PROJECT_DIR$/src/app/service/app.service.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -36,69 +30,77 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="lite-version" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="verDisponibilidadMesa.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="47" lean-forward="false" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
-              <folding>
-                <element signature="e#625#633#0" expanded="true" />
-                <element signature="e#858#866#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reserva.consulta.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="30" column="39" lean-forward="false" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
-              <folding>
-                <element signature="e#41#91#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.service.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/service/app.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="32" column="82" lean-forward="false" selection-start-line="32" selection-start-column="82" selection-end-line="32" selection-end-column="82" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="verDisponibilidadMesa.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reserva.consulta.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1545">
-              <caret line="103" column="22" lean-forward="false" selection-start-line="62" selection-start-column="16" selection-end-line="103" selection-end-column="22" />
-              <folding>
-                <element signature="e#3215#3223#0" expanded="true" />
-                <element signature="e#3508#3516#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="vertical" split-proportion="0.631242">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="verDisponibilidadMesa.component.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="233">
+                  <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="reserva.component.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/app/+reserva/reserva.component.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="125">
+                  <caret line="123" column="56" lean-forward="false" selection-start-line="123" selection-start-column="56" selection-end-line="123" selection-end-column="56" />
+                  <folding>
+                    <element signature="e#0#59#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="reserva.consulta.component.ts" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="144">
+                  <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+                  <folding>
+                    <element signature="e#41#91#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.service.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/app/service/app.service.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="73">
+                  <caret line="25" column="11" lean-forward="false" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="reserva.consulta.component.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="123">
+                  <caret line="81" column="66" lean-forward="true" selection-start-line="81" selection-start-column="66" selection-end-line="81" selection-end-column="66" />
+                  <folding>
+                    <element signature="e#3246#3254#0" expanded="true" />
+                    <element signature="e#3539#3547#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -111,36 +113,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Pardos Chicke</find>
-      <find>Consultar Reservas</find>
-      <find>Consultar Reserva</find>
-      <find>agreg</find>
-      <find>STAGE</find>
-      <find>stage</find>
-      <find>A-1</find>
-      <find>A1</find>
-      <find>speaci</find>
-      <find>monto</find>
-      <find>nueva</find>
-      <find>cance</find>
-      <find>d</find>
-      <find>dn</find>
-      <find>fa</find>
-      <find>fa-</find>
-      <find>fa-e</find>
-      <find>fa-eye</find>
-      <find>pedido</find>
       <find>r</find>
       <find>Re</find>
       <find>Reserva</find>
       <find>dni</find>
       <find>Reserva C</find>
       <find>ReservaConsulta</find>
-      <find>local</find>
       <find>dataService</find>
       <find>prime</find>
       <find>BrowserModule</find>
       <find>style</find>
+      <find>fecha</find>
+      <find>GET_RESERVA_CONSULTA</find>
+      <find>reservaByCode</find>
+      <find>cod_reserva</find>
+      <find>motivo</find>
+      <find>cantidad_personas</find>
+      <find>estado</find>
+      <find>clien</find>
+      <find>loca</find>
+      <find>local</find>
+      <find>succes</find>
+      <find>suc</find>
+      <find>button</find>
+      <find>ngIf</find>
+      <find>OnDestroy</find>
+      <find>confirm</find>
+      <find>obtenerInformacionClienteByDNI</find>
+      <find>que reser</find>
+      <find>nombre</find>
+      <find>nombres</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -149,10 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/+menu/components/menu-name/menu-name.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/+menu/menu.component.html" />
-        <option value="$PROJECT_DIR$/src/app/+menu/pipes/join.pipe.ts" />
-        <option value="$PROJECT_DIR$/src/app/+menu/menu.module.ts" />
         <option value="$PROJECT_DIR$/src/app/+menu/menu.component.ts" />
         <option value="$PROJECT_DIR$/src/app/+menu/components/toppings-selector/toppings-selector.component.ts" />
         <option value="$PROJECT_DIR$/src/app/+menu/components/toppings-selector/toppings-selector.component.scss" />
@@ -187,19 +185,23 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/index.html" />
         <option value="$PROJECT_DIR$/src/app/dto/reservaDto.ts" />
-        <option value="$PROJECT_DIR$/src/app/dto/ReservaFilter.ts" />
         <option value="$PROJECT_DIR$/src/environments/environment.ts" />
-        <option value="$PROJECT_DIR$/src/app/dto/reservaResult.ts" />
         <option value="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.module.ts" />
-        <option value="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.html" />
-        <option value="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/+reserva/reserva.module.ts" />
-        <option value="$PROJECT_DIR$/src/app/+reserva/reserva.component.html" />
-        <option value="$PROJECT_DIR$/src/app/+reserva/reserva.component.ts" />
         <option value="$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.css" />
+        <option value="$PROJECT_DIR$/src/app/dto/ReservaFilter.ts" />
+        <option value="$PROJECT_DIR$/src/app/dto/notificacionresult.ts" />
+        <option value="$PROJECT_DIR$/src/app/dto/Cliente.ts" />
+        <option value="$PROJECT_DIR$/src/app/+reserva/reserva.module.ts" />
+        <option value="$PROJECT_DIR$/src/app/dto/Mesa.ts" />
         <option value="$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.ts" />
         <option value="$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.html" />
+        <option value="$PROJECT_DIR$/src/app/+reserva/reserva.component.html" />
         <option value="$PROJECT_DIR$/src/app/service/app.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/dto/Reserva.ts" />
+        <option value="$PROJECT_DIR$/src/app/dto/reservaResult.ts" />
+        <option value="$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.html" />
+        <option value="$PROJECT_DIR$/src/app/+reserva/reserva.component.ts" />
       </list>
     </option>
   </component>
@@ -215,8 +217,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -234,6 +237,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -408,7 +412,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -425,7 +428,6 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="ignore_missing_gitignore" value="true" />
-    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -571,12 +573,13 @@
       <workItem from="1500216336584" duration="969000" />
       <workItem from="1500236463293" duration="7411000" />
       <workItem from="1500259596779" duration="1465000" />
-      <workItem from="1500329967777" duration="847000" />
+      <workItem from="1500329967777" duration="1335000" />
+      <workItem from="1500345221015" duration="18792000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73010000" />
+    <option name="totallyTimeSpent" value="92290000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -588,26 +591,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2149401" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2149401" sideWeight="0.49551857" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43975905" sideWeight="0.5024665" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2939759" sideWeight="0.49753347" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29193342" sideWeight="0.49753347" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2149401" sideWeight="0.50448143" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -622,10 +625,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/rev-slider.js" />
-    <entry file="file://$PROJECT_DIR$/css/style.css" />
-    <entry file="file://$PROJECT_DIR$/upload/apple-touch-icon-144x144.png" />
-    <entry file="file://$PROJECT_DIR$/js/jquery.min.js" />
     <entry file="file://$PROJECT_DIR$/css/bootstrap.min.css" />
     <entry file="file://$PROJECT_DIR$/css/lightbox.min.css" />
     <entry file="file://$PROJECT_DIR$/src/app/+menu/menu.component.ts">
@@ -834,52 +833,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/dto/ReservaFilter.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/dto/reservaResult.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="15" lean-forward="false" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#41#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/+reserva/reserva.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="35" lean-forward="false" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/+reserva/reserva.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="130" lean-forward="false" selection-start-line="16" selection-start-column="130" selection-end-line="16" selection-end-column="130" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/+reserva/reserva.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="90">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -887,56 +845,136 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/service/app.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1545">
-          <caret line="103" column="22" lean-forward="false" selection-start-line="62" selection-start-column="16" selection-end-line="103" selection-end-column="22" />
+        <state relative-caret-position="73">
+          <caret line="25" column="11" lean-forward="false" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/dto/notificacionresult.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
           <folding>
-            <element signature="e#3215#3223#0" expanded="true" />
-            <element signature="e#3508#3516#0" expanded="true" />
+            <element signature="n#!!doc;n#NotificacionResult#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/dto/Mesa.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding>
+            <element signature="n#!!doc;n#Mesa#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/dto/Cliente.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!doc;n#Cliente#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        <state relative-caret-position="345">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/+reserva/reserva.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="47" lean-forward="false" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+        <state relative-caret-position="210">
+          <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding>
-            <element signature="e#625#633#0" expanded="true" />
-            <element signature="e#858#866#0" expanded="true" />
+            <element signature="e#41#82#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/dto/ReservaFilter.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="81" column="66" lean-forward="true" selection-start-line="81" selection-start-column="66" selection-end-line="81" selection-end-column="66" />
+          <folding>
+            <element signature="e#3246#3254#0" expanded="true" />
+            <element signature="e#3539#3547#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/dto/Reserva.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="15" lean-forward="false" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+          <folding>
+            <element signature="n#!!doc;n#Reserva#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/+reserva/reserva.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="22" column="122" lean-forward="false" selection-start-line="22" selection-start-column="122" selection-end-line="22" selection-end-column="122" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/dto/reservaResult.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/+reserva-consulta/reserva.consulta.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="30" column="39" lean-forward="false" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+        <state relative-caret-position="144">
+          <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
           <folding>
             <element signature="e#41#91#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/service/app.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/+reserva/reserva.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="32" column="82" lean-forward="false" selection-start-line="32" selection-start-column="82" selection-end-line="32" selection-end-column="82" />
+        <state relative-caret-position="125">
+          <caret line="123" column="56" lean-forward="false" selection-start-line="123" selection-start-column="56" selection-end-line="123" selection-end-column="56" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/+disponibilidadMesa/verDisponibilidadMesa.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

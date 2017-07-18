@@ -1,25 +1,25 @@
 /**
- * Created by javier on 7/13/17.
+ * Created by javier on 7/17/17.
  */
-
-export class ReservaResult {
+export class Reserva {
 
     constructor(
-        public cod_reserva?: string,
-        public dni?: string,
+        public cod_reserva?: number,
+        public dni?: number,
         public nombre?: string,
-        public apellido?: string,
+        public ap_paterno?: string,
         public correo?: string,
         public fecha_reserva?: string,
         public nombre_local?: string,
         public hora?: string,
         public telefono?: string,
         public cantidad_personas?: string,
-        public mesa?: string,
-        public nombre_cliente?: string,
+        public cod_mesa?: string,
         public comentario?: string,
         public tipo_reserva?: string,
-        public estado?: string
+        public estado?: string,
+        public motivo?: string,
+
     ) {
     }
 

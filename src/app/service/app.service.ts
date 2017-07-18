@@ -4,6 +4,10 @@ import {ReservaResult} from "../dto/reservaResult";
 import {Observable} from "rxjs/Observable";
 import {ReservaFilter} from "../dto/ReservaFilter";
 import {environment} from "../../environments/environment";
+import {Reserva} from "../dto/Reserva";
+import {NotificacionResult} from "../dto/notificacionresult";
+import {Cliente} from "../dto/Cliente";
+import {Mesa} from "../dto/Mesa";
 /**
  * Created by javier on 7/16/17.
  */
@@ -15,17 +19,17 @@ export class AppService {
     localhost:  String = environment.backend;
     port: String = environment.port;
 
-    private GET_RESERVA_CONSULTA = '/api/centroCosto/buscarCentrosCostos';
-
-    //private domainserver:string = 'http://10.241.16.14:3000';
     private domainserver:string = 'http://localhost:8080';
 
     constructor(private http: Http) {};
 
-    public getReservaByCode(code:string){
+    public getReservaByCode(code: any){
 
-        return this.http.get('http://'+this.localhost+':'+ this.port +'/centroCosto/obtenerCentrosCosto')
-            .map(res => <ReservaResult> res.json())
+        let url = 'http://'+this.localhost+':'+ this.port +'/reserva/reservaByCode';
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        return this.http.post(url, JSON.stringify(code), {headers: header})
+            .map(res => <Reserva> res.json())
             .catch(this.handleError);
     }
 
@@ -38,12 +42,55 @@ export class AppService {
             .catch(this.handleError);
     }
 
+    actualizarReserva(reserva: Reserva) {
+
+        let url = 'http://'+this.localhost+':'+ this.port +'/reserva/actualizarReserva';
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        return this.http.post(url, JSON.stringify(reserva), {headers: header})
+            .map(res => <NotificacionResult> res.json())
+            .catch(this.handleError);
+    }
+
+    registrarReserva(reserva: Reserva) {
+
+        let url = 'http://'+this.localhost+':'+ this.port +'/reserva/registrarReserva';
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        return this.http.post(url, JSON.stringify(reserva), {headers: header})
+            .map(res => <NotificacionResult> res.json())
+            .catch(this.handleError);
+    }
+
+    obtenerInformacionClienteByDNI(dni: number) {
+
+        let url = 'http://'+this.localhost+':'+ this.port +'/reserva/obtenerInformacionClienteByDNI';
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        return this.http.post(url, JSON.stringify(dni), {headers: header})
+            .map(res => <Cliente> res.json())
+            .catch(this.handleError);
+
+    }
+
+    obtenerUltimaReservaClienteByDNI(dni: number) {
+
+        let url = 'http://'+this.localhost+':'+ this.port +'/reserva/obtenerUltimaReservaClienteByDNI';
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        return this.http.post(url, JSON.stringify(dni), {headers: header})
+            .map(res => <Mesa> res.json())
+            .catch(this.handleError);
+
+    }
+
+
     anularReserva(dataItem: any){
-        let url = 'http://'+this.localhost+':'+ this.port +'/empleado/busquedaEmpleado';
+        let url = 'http://'+this.localhost+':'+ this.port +'/reserva/anularReserva';
         let header = new Headers({'Content-Type': 'application/json'});
 
         return this.http.post(url, JSON.stringify(dataItem), {headers: header})
-            .map(res => <ReservaResult[]> res.json())
+            .map(res => <NotificacionResult> res.json())
             .catch(this.handleError);
     }
 

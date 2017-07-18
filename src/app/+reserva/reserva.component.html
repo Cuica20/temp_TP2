@@ -1,3 +1,4 @@
+<p-growl [(value)]="msgs"></p-growl>
 <div id="content" class="search-view">
     <div class="reserva-creator">
         <div class="reserva-creator__title">
@@ -14,7 +15,7 @@
                         <div class="row">
                             <section class="col col-2">
                                 <label class="input"> <i class="icon-append fa fa-user"></i>
-                                    <input type="text" name="dni" placeholder="DNI" [(ngModel)]="reservaResult.dni" (blur)="showMessageSuggest()"/>
+                                    <input type="text" name="dni" placeholder="DNI" [(ngModel)]="reservaResult.dni" (keyup)="showMessageSuggest($event)"/>
                                 </label>
                             </section>
                             <section class="col col-3">
@@ -24,7 +25,7 @@
                             </section>
                             <section class="col col-4">
                                 <label class="input"> <i class="icon-append fa fa-user"></i>
-                                    <input type="text" name="apellido" placeholder="Apellido" [(ngModel)]="reservaResult.apellido"/>
+                                    <input type="text" name="apellido" placeholder="Apellido" [(ngModel)]="reservaResult.ap_paterno"/>
                                 </label>
                             </section>
                             <section class="col col-3">
@@ -37,17 +38,17 @@
                         <div class="row">
                             <section class="col col-2">
                                 <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
-                                    <input type="text" name="tipoReserva" placeholder="Tipo Reserva" [(ngModel)]="reservaResult.local"/>
+                                    <input type="text" name="tipoReserva" placeholder="Tipo Reserva" [(ngModel)]="reservaResult.tipo_reserva"/>
                                 </label>
                             </section>
                             <section class="col col-3">
                                 <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
-                                    <input type="text" name="local" placeholder="Local" [(ngModel)]="reservaResult.local"/>
+                                    <input type="text" name="local" placeholder="Local" [(ngModel)]="reservaResult.nombre_local"/>
                                 </label>
                             </section>
                             <section class="col col-2">
                                 <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                                    <input type="text" name="fecha" placeholder="Fecha" [(ngModel)]="reservaResult.fecha"/>
+                                    <input type="text" name="fecha" placeholder="Fecha" [(ngModel)]="reservaResult.fecha_reserva"/>
                                 </label>
                             </section>
                             <section class="col col-2">
@@ -66,15 +67,15 @@
                         <div class="row">
                             <section class="col col-2">
                                 <label class="input"> <i class="icon-append fa fa-money"></i>
-                                    <input type="text" name="cantidad" placeholder="Cantidad" [(ngModel)]="reservaResult.cantidad" />
+                                    <input type="text" name="cantidad" placeholder="Cantidad" [(ngModel)]="reservaResult.cantidad_personas" />
                                 </label>
                             </section>
                             <section class="col col-2">
                                 <label class="input">
-                                    <input type="text" name="mesa" placeholder="Mesa" [(ngModel)]="reservaResult.mesa" />
+                                    <input type="text" name="mesa" placeholder="Mesa" [(ngModel)]="reservaResult.cod_mesa" />
                                 </label>
                             </section>
-                            <div class="col col-5">
+                            <div class="col col-5" *ngIf="reservaResult.estado == 'Confirmado' || reservaResult.estado == null">
                                 <button type="submit" (click)="verDisponibiliddadMesa()" class="btn btn-lg btn-primary">
                                     Ver Disponibilidad de mesa
                                 </button>
@@ -90,7 +91,7 @@
                                 </label>
                             </section>
                         </div>
-                        <div class="row">
+                        <div class="row" *ngIf="reservaResult.estado == 'Confirmado' || reservaResult.estado == null">
                             <section class="col col-2">
                                 <label class="label-dummy">&nbsp;</label>
                                 <button type="submit" class="btn btn-lg btn-primary" (click)="guardarReserva()">
@@ -105,9 +106,16 @@
                             </section>
                         </div>
                     </fieldset>
-                    <p-confirmDialog header="Mensaje" icon="fa fa-question-circle" width="425"></p-confirmDialog>
                 </div>
             </div>
         </div>
+
+        <p-dialog header="Mensaje" [(visible)]="display" modal="modal" width="300" [responsive]="true">
+            <p>Estimado {{reservaResult.nombre}} {{reservaResult.ap_paterno}} desea elegir la misma mesa de siempre?</p>
+            <p-footer>
+                <button type="button" pButton icon="fa-check" (click)="yesQuestion()" label="Yes"></button>
+                <button type="button" pButton icon="fa-close" (click)="noQuestion()" label="No"></button>
+            </p-footer>
+        </p-dialog>
     </div>
 </div>

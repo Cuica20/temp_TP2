@@ -33,7 +33,7 @@ export class ReservaConsultaComponent implements OnInit {
                 this.reservaResult = data;
             },
             error => {
-                this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});
+                /*this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});*/
             }
         );
     }
@@ -43,8 +43,10 @@ export class ReservaConsultaComponent implements OnInit {
             accept: () => {
                 this.appService.anularReserva(dataItem).subscribe(
                     (data: any) => {
-                        this.getReserva();
-                        this.msgs.push({severity:'success', summary:'Success Message', detail:'Reserva Anulada'});
+                        if (data.codigo == 1) {
+                            this.msgs.push({severity:'success', summary:'Success Message', detail:'Reserva Anulada'});
+                            this.getReserva();
+                        }
                     },
                     error => {
                         this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});
@@ -52,6 +54,18 @@ export class ReservaConsultaComponent implements OnInit {
                 );
             }
         });
+
+    }
+
+    busquedaReserva(){
+        this.appService.getReservaConsulta(this.reservafilter).subscribe(
+            (data: any) => {
+                this.reservaResult = data;
+            },
+            error => {
+                this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});
+            }
+        );
 
     }
 
