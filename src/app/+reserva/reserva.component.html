@@ -37,27 +37,41 @@
 
                         <div class="row">
                             <section class="col col-2">
+                                <label></label>
                                 <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
-                                    <input type="text" name="tipoReserva" placeholder="Tipo Reserva" [(ngModel)]="reservaResult.tipo_reserva"/>
+                                    <input type="text" name="tipoReserva" placeholder="Tipo Reserva" [(ngModel)]="reservaResult.tipo_reserva" disabled="disabled"/>
                                 </label>
                             </section>
                             <section class="col col-3">
+                                <label></label>
                                 <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
-                                    <input type="text" name="local" placeholder="Local" [(ngModel)]="reservaResult.nombre_local"/>
-                                </label>
-                            </section>
-                            <section class="col col-2">
-                                <label class="input"> <i class="icon-append fa fa-calendar"></i>
-                                    <input type="text" name="fecha" placeholder="Fecha" [(ngModel)]="reservaResult.fecha_reserva"/>
-                                </label>
-                            </section>
-                            <section class="col col-2">
-                                <label class="input"> <i class="icon-append fa fa-clock-o"></i>
-                                    <input type="text" name="hora" placeholder="Hora" [(ngModel)]="reservaResult.hora"/>
+                                    <input type="text" name="local" placeholder="Local" [(ngModel)]="reservaResult.nombre_local" disabled="disabled"/>
                                 </label>
                             </section>
 
                             <section class="col col-2">
+                                <label>Fecha</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text"
+                                           placeholder="Seleccionar una Fecha"
+                                           [(ngModel)]="reservaResult.fecha_reserva" (keyup)="onGetFechaReserva($event)"
+                                           saUiDatepicker date-format="dd/MM/yy"/>
+                                </label>
+                            </section>
+
+                            <section class="col col-2">
+                                <label>Hora (hh:mm)</label>
+                                <label class="input">
+                                    <p-inputMask mask="99:99" [(ngModel)]="reservaResult.hora" (onBlur)="onGetHoraReserva($event)"
+                                                 placeholder="00:00" id="hora"></p-inputMask>
+                                </label>
+
+                            </section>
+
+
+                            <section class="col col-2">
+                                <label></label>
                                 <label class="input"> <i class="icon-append fa fa-phone"></i>
                                     <input type="tel" name="phone" placeholder="Tel&eacute;fono" saMaskedInput="(999) 999-9999" [(ngModel)]="reservaResult.telefono" />
                                 </label>
@@ -72,12 +86,12 @@
                             </section>
                             <section class="col col-2">
                                 <label class="input">
-                                    <input type="text" name="mesa" placeholder="Mesa" [(ngModel)]="reservaResult.cod_mesa" />
+                                    <input type="text" name="mesa" placeholder="Mesa" [(ngModel)]="reservaResult.nombre_mesa" />
                                 </label>
                             </section>
                             <div class="col col-5" *ngIf="reservaResult.estado == 'Confirmado' || reservaResult.estado == null">
-                                <button type="submit" (click)="verDisponibiliddadMesa()" class="btn btn-lg btn-primary">
-                                    Ver Disponibilidad de mesa
+                                <button type="submit" class="btn btn-lg btn-primary">
+                                    Mesas disponibles
                                 </button>
                             </div>
                         </div>
@@ -90,11 +104,13 @@
                                 </textarea>
                                 </label>
                             </section>
-                            <section class="table-responsive col-md-6">
+                            <section class="table-responsive col-md-6" *ngIf="reservaResult.estado == 'Confirmado' || reservaResult.estado == null">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>Mesas</th>
+                                        <th>Nombre</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -102,9 +118,21 @@
 
                                         <td>
                                             <button [ngClass]="{disponible_table : asset.disponibilidad, no_disponible_table: !asset.disponibilidad}"
-                                                    [disabled]="!asset.disponibilidad" (click)="selectedTable(asset)">{{asset.cod_mesa}}</button>
+                                                    [disabled]="!asset.disponibilidad" (click)="selectedTable(asset)">
+                                                <div *ngIf="asset.disponibilidad == true">
+                                                    <img src="../../assets/img/mesa/mesa_disponible.jpeg" height="50" width="50"/>{{asset.nombre_mesa}}
+                                                </div>
+                                                <div *ngIf="asset.disponibilidad == false">
+                                                    <img src="../../assets/img/mesa/mesa_nodisponible.jpeg" height="50" width="50"/>{{asset.nombre_mesa}}
+                                                </div>
+                                            </button>
                                         </td>
-
+                                        <td>
+                                            {{asset.fecha_mesa}}
+                                        </td>
+                                        <td>
+                                            {{asset.hora_mesa}}
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -132,7 +160,7 @@
         <p-dialog header="Mensaje" [(visible)]="display" modal="modal" width="300" [responsive]="true">
             <p>Estimado {{reservaResult.nombre}} {{reservaResult.ap_paterno}} desea elegir la misma mesa de siempre?</p>
             <p-footer>
-                <button type="button" pButton icon="fa-check" (click)="yesQuestion()" label="Yes"></button>
+                <button type="button" pButton icon="fa-check" (click)="yesQuestion()" label="Si"></button>
                 <button type="button" pButton icon="fa-close" (click)="noQuestion()" label="No"></button>
             </p-footer>
         </p-dialog>

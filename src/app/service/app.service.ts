@@ -51,6 +51,15 @@ export class AppService {
             .catch(this.handleError);
     }
 
+    getMesaDisponibleByDateHour(data: Reserva) {
+        let url = 'http://'+this.localhost+':'+ this.port +'/reserva/getMesaDisponibleByDateHour';
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        return this.http.post(url, JSON.stringify(data), {headers: header})
+            .map(res => <Mesa[]> res.json())
+            .catch(this.handleError);
+    }
+
     actualizarReserva(reserva: Reserva) {
 
         let url = 'http://'+this.localhost+':'+ this.port +'/reserva/actualizarReserva';

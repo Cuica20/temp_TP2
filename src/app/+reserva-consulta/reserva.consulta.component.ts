@@ -21,7 +21,9 @@ export class ReservaConsultaComponent implements OnInit {
     reservafilter: ReservaFilter = new ReservaFilter();
 
 
-    constructor(private router: Router, private appService: AppService,private confirmationService: ConfirmationService) { }
+    constructor(private router: Router,
+                private appService: AppService,
+                private confirmationService: ConfirmationService) { }
 
     ngOnInit() {
         this.getReserva();
@@ -40,11 +42,12 @@ export class ReservaConsultaComponent implements OnInit {
     anularReserva(dataItem: any){
         this.confirmationService.confirm({
             message: 'Desea Anular la Reserva?',
+            icon: 'fa fa-trash',
             accept: () => {
                 this.appService.anularReserva(dataItem).subscribe(
                     (data: any) => {
                         if (data.codigo == 1) {
-                            this.msgs.push({severity:'success', summary:'Success Message', detail:'Reserva Anulada'});
+                            this.msgs.push({severity:'success', summary:'Mensaje exitoso', detail:'Reserva anulada'});
                             this.getReserva();
                         }
                     },
@@ -52,6 +55,9 @@ export class ReservaConsultaComponent implements OnInit {
                         this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});
                     }
                 );
+            },
+            reject: () => {
+                this.msgs = [{severity:'info', summary:'Sin cambios', detail:'Has rechazado'}];
             }
         });
 
@@ -75,7 +81,7 @@ export class ReservaConsultaComponent implements OnInit {
 
     irDetalle(data: ReservaResult){
 
-        sessionStorage.setItem('idDetalleReserva',data.cod_reserva);
+        sessionStorage.setItem('idDetalleReserva',JSON.stringify(data));
         this.router.navigate(['/reserva']);
     }
 

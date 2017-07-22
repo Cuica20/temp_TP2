@@ -85,7 +85,7 @@
                                             <span class="fa fa-pencil"></span></a>
                                     </td>
                                     <td class="text-center" width="40">
-                                        <a href="javascript:void(0)" class="link" (click)="anularReserva(asset)">
+                                        <a href="javascript:void(0)" *ngIf="asset.estado !== 'Anulado'" class="link" (click)="anularReserva(asset)">
                                             <span class="fa fa-trash"></span></a>
                                     </td>
                                     <td>{{asset.cod_reserva}}</td>
@@ -104,7 +104,12 @@
                 </div>
             </div>
         </div>
-        <p-confirmDialog header="Confirmaci&oacute;n" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+        <p-confirmDialog header="Confirmaci&oacute;n" icon="fa fa-question-circle" width="425" #cd>
+            <p-footer>
+                <button type="button" pButton icon="fa-check" label="Si" (click)="cd.accept()"></button>
+                <button type="button" pButton icon="fa-close" label="No" (click)="cd.reject()"></button>
+            </p-footer>
+        </p-confirmDialog>
     </div>
 </div>
 

@@ -21,64 +21,112 @@ export class ReservaComponent implements OnInit,OnDestroy {
     display: boolean = false;
     public mesaResult: Mesa[] = [];
 
-  constructor(private _router: Router,
+    constructor(private _router: Router,
               private appService: AppService,
               private confirmationService: ConfirmationService) { }
 
-  ngOnInit() {
+    ngOnInit() {
 
       let dniObject = JSON.parse(sessionStorage.getItem('idDetalleReserva'));
       if(dniObject !=null){
-          this.obtenerReservaById(dniObject);
+          this.obtenerReservaById(dniObject.cod_reserva);
       }else{
           this.reservaResult = new Reserva();
           this.reservaResult.tipo_reserva = 'Normal';
           this.reservaResult.nombre_local = 'Angamos';
-          this.mesaShow();
+          this.showMesasDisponibles();
       }
 
+    }
+    /* -----------------Obtener detalle de la reserva por el cod_reserva----------------- */
+    private obtenerReservaById(code: any){
+        this.appService.getReservaByCode(code).subscribe(
+            (data: Reserva) => {
+                debugger;
+                this.reservaResult = data;
+                this.reservaResult.cod_mesa_anterior = data.cod_mesa;
+                this.getMesaDisponibleByDateHour(this.reservaResult);
+                /*this.getMesaDisponibles(this.reservaResult.dni);*/
+            },
+            error => {
+                /*this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});*/
+            }
+        );
+    }
 
-  }
+    private getMesaDisponibles(data: any){
 
-  mesaShow(){
-     this.getMesaDisponibles('99999999');
-  }
-  getMesaDisponibles(data: any){
         this.appService.getDisponibilidadMesas(data).subscribe(
             (data:any) => {
+                debugger;
                 this.mesaResult = data;
             },
             error => {
                 /*this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});*/
             }
         );
-  }
-    selectedTable(dataItem: any){
-        this.reservaResult.cod_mesa = dataItem.cod_mesa;
     }
 
-  obtenerReservaById(code: any){
+    /* -----------------Pregunta si desea reserva la misma mesa de siempre----------------- */
+    yesQuestion(){
+        this.display = false;
+        this.appService.obtenerUltimaReservaClienteByDNI(this.reservaResult.dni).subscribe(
+            (data:Mesa) => {
+                debugger;
+                if(data.nombre_mesa === null){
+                    this.msgs.push({severity:'info', summary:'Mensaje', detail:'No posee reservas anteriores'});
+                }else{
+                    /*if(data.disponibilidad === true){*/
+                        this.reservaResult.nombre_mesa = data.nombre_mesa;
+                        this.reservaResult.cod_mesa = data.cod_mesa;
+                    /*}else{
+                        this.msgs.push({severity:'info', summary:'Mensaje', detail:'La mesa que reservo anteriormente ya esta ocupada'});
+                    }*/
 
-      this.appService.getReservaByCode(code).subscribe(
-          data => {
-              this.showDetailReserva(data);
-          },
-          error => {
-              /*this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});*/
-          }
-      );
-  }
+                }
+            },
+            error => {
+            }
+        );
+    }
+    noQuestion(){
+        this.display = false;
+    }
 
-  verDisponibiliddadMesa(){
-  }
+    showMessageSuggest($event){
+        if ($event.target.value.length == 8) {
+            if(this.reservaResult.estado == null){
+                this.appService.obtenerInformacionClienteByDNI(this.reservaResult.dni).subscribe(
+                    (data:Cliente) => {
+                        this.dataCliente(data);
+                    },
+                    error => {
+                    }
+                );
+            }
+        }
+    }
 
-  showDetailReserva(data: Reserva){
-      this.reservaResult = data;
-      this.getMesaDisponibles(this.reservaResult.dni);
-  }
 
-    ngOnDestroy(): void {
-      /*sessionStorage.removeItem('idDetalleReserva');*/
+    dataCliente(data: Cliente){
+        if(data.dni == null){
+            this.display = false;
+        }else{
+            this.display = true;
+            this.reservaResult = data;
+            this.reservaResult.tipo_reserva = 'Normal';
+            this.reservaResult.nombre_local = 'Angamos';
+        }
+    }
+
+    showMesasDisponibles(){
+     this.getMesaDisponibles('99999999');
+    }
+
+    selectedTable(dataItem: any){
+        debugger;
+        this.reservaResult.cod_mesa = dataItem.cod_mesa;
+        this.reservaResult.nombre_mesa = dataItem.nombre_mesa;
     }
 
     cancelarReserva(){
@@ -88,8 +136,35 @@ export class ReservaComponent implements OnInit,OnDestroy {
         this._router.navigate(['/reservaConsulta']);
     }
 
+    onGetFechaReserva($event){
+        if ($event.target.value.length === 10) {
+            if(this.reservaResult.fecha_reserva != null && this.reservaResult.hora!=null){
+                this.getMesaDisponibleByDateHour(this.reservaResult);
+            }
+        }
+    }
+
+    onGetHoraReserva($event){
+        if ($event.target.value.length === 5) {
+            if(this.reservaResult.fecha_reserva != null && this.reservaResult.hora!=null){
+                this.getMesaDisponibleByDateHour(this.reservaResult);
+            }
+        }
+    }
+
+    private getMesaDisponibleByDateHour(dataItem: Reserva){
+        this.appService.getMesaDisponibleByDateHour(dataItem).subscribe(
+            (data:any) => {
+                this.mesaResult = data;
+            },
+            error => {
+                /*this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});*/
+            }
+        );
+    }
+
     guardarReserva(){
-        debugger;
+
         if(this.reservaResult.cod_reserva != null){
             this.appService.actualizarReserva(this.reservaResult).subscribe(
                 (data:any) => {
@@ -120,46 +195,9 @@ export class ReservaComponent implements OnInit,OnDestroy {
 
     }
 
-    showMessageSuggest($event){
-        if ($event.target.value.length == 8) {
-            if(this.reservaResult.estado == null){
-                this.appService.obtenerInformacionClienteByDNI(this.reservaResult.dni).subscribe(
-                    (data:Cliente) => {
-                        this.dataCliente(data);
-                    },
-                    error => {
-                    }
-                );
-            }
-        }
-    }
-
-
-    dataCliente(data: Cliente){
-        if(data.dni == null){
-            this.display = false;
-        }else{
-            this.display = true;
-            this.reservaResult = data;
-            this.reservaResult.tipo_reserva = 'Normal';
-            this.reservaResult.nombre_local = 'Angamos';
-        }
-
-
-    }
-
-    yesQuestion(){
-        this.display = false;
-        this.appService.obtenerUltimaReservaClienteByDNI(this.reservaResult.dni).subscribe(
-            (data:Mesa) => {
-                this.reservaResult.cod_mesa = data.cod_mesa;
-            },
-            error => {
-            }
-        );
-    }
-    noQuestion(){
-        this.display = false;
+    ngOnDestroy(): void {
+        console.log('ngDestroy idDetalleReserva')
+        sessionStorage.removeItem('idDetalleReserva');
     }
 
 }
