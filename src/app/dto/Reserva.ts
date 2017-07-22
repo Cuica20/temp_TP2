@@ -16,7 +16,7 @@ export class Reserva {
         public cantidad_personas?: string,
         public cod_mesa?: number,
         public cod_mesa_anterior?: number,
-        public nombre_mesa?: number,
+        public nombre_mesa?: string,
         public comentario?: string,
         public tipo_reserva?: string,
         public estado?: string,

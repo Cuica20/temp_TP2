@@ -91,6 +91,17 @@ export class AppService {
 
     }
 
+    verDisponibilidadMesa(cod_mesa: number) {
+
+        let url = 'http://'+this.localhost+':'+ this.port +'/reserva/verDisponibilidadMesa';
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        return this.http.post(url, JSON.stringify(cod_mesa), {headers: header})
+            .map(res => <Mesa> res.json())
+            .catch(this.handleError);
+
+    }
+
     obtenerUltimaReservaClienteByDNI(dni: number) {
 
         let url = 'http://'+this.localhost+':'+ this.port +'/reserva/obtenerUltimaReservaClienteByDNI';

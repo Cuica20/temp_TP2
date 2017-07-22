@@ -41,6 +41,10 @@ export const routes: Routes = [
             {
                 path: 'verDisponibilidadMesa',
                 loadChildren: 'app/+disponibilidadMesa/verDisponibilidadMesa.module#VerDisponibilidadMesaModule'
+            },
+            {
+                path: 'dashboard',
+                loadChildren: 'app/+dashboard/dashboard.module#DashboardModule'
             }
         ]
     },

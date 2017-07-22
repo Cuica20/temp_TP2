@@ -15,22 +15,26 @@
                         <div class="row">
                             <section class="col col-2">
                                 <label class="input"> <i class="icon-append fa fa-user"></i>
-                                    <input type="text" name="dni" placeholder="DNI" [(ngModel)]="reservaResult.dni" (keyup)="showMessageSuggest($event)"/>
+                                    <input type="text" name="dni" placeholder="DNI" [disabled]="reservaResult.estado === 'Anulado' || isNew === false"
+                                           [(ngModel)]="reservaResult.dni" (keyup)="showMessageSuggest($event)"/>
                                 </label>
                             </section>
                             <section class="col col-3">
                                 <label class="input"> <i class="icon-append fa fa-user"></i>
-                                    <input type="text" name="nombres" placeholder="Nombres" [(ngModel)]="reservaResult.nombre"/>
+                                    <input type="text" name="nombres" placeholder="Nombres" [disabled]="reservaResult.estado === 'Anulado'  || isNew === false"
+                                           [(ngModel)]="reservaResult.nombre"/>
                                 </label>
                             </section>
                             <section class="col col-4">
                                 <label class="input"> <i class="icon-append fa fa-user"></i>
-                                    <input type="text" name="apellido" placeholder="Apellido" [(ngModel)]="reservaResult.ap_paterno"/>
+                                    <input type="text" name="apellido" placeholder="Apellido" [disabled]="reservaResult.estado === 'Anulado'  || isNew === false"
+                                           [(ngModel)]="reservaResult.ap_paterno"/>
                                 </label>
                             </section>
                             <section class="col col-3">
                                 <label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-                                    <input type="email" name="correo" placeholder="Correo" [(ngModel)]="reservaResult.correo"/>
+                                    <input type="email" name="correo" placeholder="Correo" [disabled]="reservaResult.estado === 'Anulado'  || isNew === false"
+                                           [(ngModel)]="reservaResult.correo"/>
                                 </label>
                             </section>
                         </div>
@@ -39,13 +43,15 @@
                             <section class="col col-2">
                                 <label></label>
                                 <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
-                                    <input type="text" name="tipoReserva" placeholder="Tipo Reserva" [(ngModel)]="reservaResult.tipo_reserva" disabled="disabled"/>
+                                    <input type="text" name="tipoReserva" placeholder="Tipo Reserva"
+                                           [(ngModel)]="reservaResult.tipo_reserva" disabled="disabled"/>
                                 </label>
                             </section>
                             <section class="col col-3">
                                 <label></label>
                                 <label class="input"> <i class="icon-append fa fa-chevron-down"></i>
-                                    <input type="text" name="local" placeholder="Local" [(ngModel)]="reservaResult.nombre_local" disabled="disabled"/>
+                                    <input type="text" name="local" placeholder="Local"
+                                           [(ngModel)]="reservaResult.nombre_local" disabled="disabled"/>
                                 </label>
                             </section>
 
@@ -54,7 +60,7 @@
                                 <label class="input">
                                     <i class="icon-append fa fa-calendar"></i>
                                     <input type="text"
-                                           placeholder="Seleccionar una Fecha"
+                                           placeholder="Seleccionar una Fecha" [disabled]="reservaResult.estado === 'Anulado'"
                                            [(ngModel)]="reservaResult.fecha_reserva" (keyup)="onGetFechaReserva($event)"
                                            saUiDatepicker date-format="dd/MM/yy"/>
                                 </label>
@@ -63,7 +69,8 @@
                             <section class="col col-2">
                                 <label>Hora (hh:mm)</label>
                                 <label class="input">
-                                    <p-inputMask mask="99:99" [(ngModel)]="reservaResult.hora" (onBlur)="onGetHoraReserva($event)"
+                                    <p-inputMask mask="99:99" [(ngModel)]="reservaResult.hora" [disabled]="reservaResult.estado === 'Anulado'"
+                                                 (onBlur)="onGetHoraReserva($event)"
                                                  placeholder="00:00" id="hora"></p-inputMask>
                                 </label>
 
@@ -73,7 +80,8 @@
                             <section class="col col-2">
                                 <label></label>
                                 <label class="input"> <i class="icon-append fa fa-phone"></i>
-                                    <input type="tel" name="phone" placeholder="Tel&eacute;fono" saMaskedInput="(999) 999-9999" [(ngModel)]="reservaResult.telefono" />
+                                    <input type="tel" name="phone" placeholder="Tel&eacute;fono" [disabled]="reservaResult.estado === 'Anulado'  || isNew === false"
+                                           saMaskedInput="(999) 999-9999" [(ngModel)]="reservaResult.telefono" />
                                 </label>
                             </section>
                         </div>
@@ -81,13 +89,17 @@
                         <div class="row">
                             <section class="col col-2">
                                 <label class="input"> <i class="icon-append fa fa-money"></i>
-                                    <input type="text" name="cantidad" placeholder="Cantidad" [(ngModel)]="reservaResult.cantidad_personas" />
+                                    <input type="text" name="cantidad" placeholder="Cantidad" [disabled]="reservaResult.estado === 'Anulado'"
+                                           [(ngModel)]="reservaResult.cantidad_personas" />
                                 </label>
                             </section>
                             <section class="col col-2">
                                 <label class="input">
-                                    <input type="text" name="mesa" placeholder="Mesa" [(ngModel)]="reservaResult.nombre_mesa" />
+                                    <input type="text" name="mesa" placeholder="Mesa" [(ngModel)]="reservaResult.nombre_mesa" disabled="disabled"/>
                                 </label>
+                            </section>
+                            <section class="col col-2" *ngIf="showultimaMesa === true">
+                                <label>Ultima mesa reservada: {{mesaUltimaReserva}}</label>
                             </section>
                             <div class="col col-5" *ngIf="reservaResult.estado == 'Confirmado' || reservaResult.estado == null">
                                 <button type="submit" class="btn btn-lg btn-primary">
@@ -100,7 +112,7 @@
                             <section class="col col-4">
                                 <label>Comentario</label>
                                 <label class="input">
-                                <textarea rows="4" cols="50" [(ngModel)]="reservaResult.comentario">
+                                <textarea rows="4" cols="50" [disabled]="reservaResult.estado === 'Anulado'" [(ngModel)]="reservaResult.comentario">
                                 </textarea>
                                 </label>
                             </section>
@@ -116,7 +128,7 @@
                                     <tbody>
                                     <tr *ngFor="let asset of mesaResult, let i=index, let last=last, let odd=odd, let even=even">
 
-                                        <td>
+                                        <td width="10">
                                             <button [ngClass]="{disponible_table : asset.disponibilidad, no_disponible_table: !asset.disponibilidad}"
                                                     [disabled]="!asset.disponibilidad" (click)="selectedTable(asset)">
                                                 <div *ngIf="asset.disponibilidad == true">
@@ -127,10 +139,10 @@
                                                 </div>
                                             </button>
                                         </td>
-                                        <td>
+                                        <td width="5">
                                             {{asset.fecha_mesa}}
                                         </td>
-                                        <td>
+                                        <td width="5">
                                             {{asset.hora_mesa}}
                                         </td>
                                     </tr>

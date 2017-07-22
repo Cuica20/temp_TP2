@@ -1,0 +1,64 @@
+<p-growl [(value)]="msgs"></p-growl>
+<div class="consulta-creator">
+    <div class="consulta-creator__title">
+        <h1>
+            <img src="assets/img/pollo.svg">
+            Poller&iacute;a Pardos Chicken
+        </h1>
+    </div>
+    <div id="content" class="search-view">
+        <div class="consulta-creator">
+            <div class="smart-form">
+                <div class="row">
+                    <div class="col col-6">
+                        <label></label>
+                        <!--<label>Resultado: {{reservaResult.length}}</label>-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="widget-body">
+                        <div class="table-responsive col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>C&oacute;digo</th>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                    <th>Local</th>
+                                    <th>Cantidad de Persona</th>
+                                    <th>Persona que reserv&oacute;</th>
+                                    <th>Tipo de Reserva</th>
+                                    <th>Estado</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let asset of reservaResult">
+                                    <td class="text-center" width="40">
+                                        <a href="javascript:void(0)" class="link" (click)="irDetalle(asset)">
+                                            <span class="fa fa-pencil"></span></a>
+                                    </td>
+                                    <td class="text-center" width="40">
+                                        <a href="javascript:void(0)" *ngIf="asset.estado !== 'Anulado'" class="link" (click)="anularReserva(asset)">
+                                            <span class="fa fa-trash"></span></a>
+                                    </td>
+                                    <td>{{asset.cod_reserva}}</td>
+                                    <td>{{asset.fecha_reserva}}</td>
+                                    <td>{{asset.hora}}</td>
+                                    <td>{{asset.nombre_local}}</td>
+                                    <td>{{asset.cantidad_personas}}</td>
+                                    <td>{{asset.nombre_cliente}}</td>
+                                    <td>{{asset.tipo_reserva}}</td>
+                                    <td>{{asset.estado}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

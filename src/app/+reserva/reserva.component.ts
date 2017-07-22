@@ -20,21 +20,26 @@ export class ReservaComponent implements OnInit,OnDestroy {
     mesaSeleccionada: Mesa = new Mesa();
     display: boolean = false;
     public mesaResult: Mesa[] = [];
+    mesaUltimaReserva: string;
+    showultimaMesa: boolean = false;
+    isNew: boolean;
 
     constructor(private _router: Router,
               private appService: AppService,
               private confirmationService: ConfirmationService) { }
 
     ngOnInit() {
-
+debugger;
       let dniObject = JSON.parse(sessionStorage.getItem('idDetalleReserva'));
+      this.isNew = JSON.parse(sessionStorage.getItem('isNew'));
+
       if(dniObject !=null){
           this.obtenerReservaById(dniObject.cod_reserva);
       }else{
           this.reservaResult = new Reserva();
           this.reservaResult.tipo_reserva = 'Normal';
           this.reservaResult.nombre_local = 'Angamos';
-          this.showMesasDisponibles();
+          //this.showMesasDisponibles();
       }
 
     }
@@ -77,8 +82,10 @@ export class ReservaComponent implements OnInit,OnDestroy {
                     this.msgs.push({severity:'info', summary:'Mensaje', detail:'No posee reservas anteriores'});
                 }else{
                     /*if(data.disponibilidad === true){*/
-                        this.reservaResult.nombre_mesa = data.nombre_mesa;
-                        this.reservaResult.cod_mesa = data.cod_mesa;
+                        /*this.reservaResult.nombre_mesa = data.nombre_mesa;
+                        this.reservaResult.cod_mesa = data.cod_mesa;*/
+                        this.showultimaMesa = true;
+                        this.mesaUltimaReserva = data.nombre_mesa;
                     /*}else{
                         this.msgs.push({severity:'info', summary:'Mensaje', detail:'La mesa que reservo anteriormente ya esta ocupada'});
                     }*/
@@ -164,6 +171,23 @@ export class ReservaComponent implements OnInit,OnDestroy {
     }
 
     guardarReserva(){
+        debugger;
+        if(this.reservaResult.fecha_reserva === undefined || this.reservaResult.dni === undefined || this.reservaResult.cod_mesa === undefined || this.reservaResult.nombre_mesa === undefined){
+            this.msgs.push({severity:'error', summary:'Reserva', detail:'Falta ingresar datos en la reserva'});
+            return;
+        }
+
+        this.appService.verDisponibilidadMesa(this.reservaResult.cod_mesa).subscribe(
+            (data:Mesa) => {
+                debugger;
+                if (data.disponibilidad === false) {
+                    this.msgs.push({severity:'info', summary:'Reserva', detail:'Mesa no disponible'});
+                    return;
+                }
+            },
+            error => {
+            }
+        );
 
         if(this.reservaResult.cod_reserva != null){
             this.appService.actualizarReserva(this.reservaResult).subscribe(

@@ -40,6 +40,7 @@ export class ReservaConsultaComponent implements OnInit {
         );
     }
     anularReserva(dataItem: any){
+        debugger;
         this.confirmationService.confirm({
             message: 'Desea Anular la Reserva?',
             icon: 'fa fa-trash',
@@ -76,11 +77,13 @@ export class ReservaConsultaComponent implements OnInit {
     }
 
     nuevaReserva(){
+        sessionStorage.setItem('isNew',JSON.stringify(true));
         this.router.navigate(['/reserva']);
     }
 
     irDetalle(data: ReservaResult){
 
+        sessionStorage.setItem('isNew',JSON.stringify(false));
         sessionStorage.setItem('idDetalleReserva',JSON.stringify(data));
         this.router.navigate(['/reserva']);
     }
