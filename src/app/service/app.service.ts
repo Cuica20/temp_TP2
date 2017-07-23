@@ -8,6 +8,8 @@ import {Reserva} from "../dto/Reserva";
 import {NotificacionResult} from "../dto/notificacionresult";
 import {Cliente} from "../dto/Cliente";
 import {Mesa} from "../dto/Mesa";
+import {PedidoResult} from "../dto/PedidoResult";
+import {DeliveryResult} from "../dto/DeliveryResult";
 /**
  * Created by javier on 7/16/17.
  */
@@ -39,6 +41,24 @@ export class AppService {
 
         return this.http.post(url, JSON.stringify(filter), {headers: header})
             .map(res => <ReservaResult[]> res.json())
+            .catch(this.handleError);
+    }
+
+    getTodoPedido(all: any) {
+        let url = 'http://'+this.localhost+':'+ this.port +'/reserva/buscarTodoPedido';
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        return this.http.post(url, JSON.stringify(all), {headers: header})
+            .map(res => <PedidoResult[]> res.json())
+            .catch(this.handleError);
+    }
+
+    getTodoDelivery(all: any) {
+        let url = 'http://'+this.localhost+':'+ this.port +'/reserva/buscarTodoDelivery';
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        return this.http.post(url, JSON.stringify(all), {headers: header})
+            .map(res => <DeliveryResult[]> res.json())
             .catch(this.handleError);
     }
 

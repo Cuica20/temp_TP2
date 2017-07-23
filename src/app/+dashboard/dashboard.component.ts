@@ -1,6 +1,8 @@
 import {Component, Input, OnChanges, OnInit, SimpleChange} from "@angular/core";
 import {AppService} from "../service/app.service";
 import {ReservaResult} from "../dto/reservaResult";
+import {PedidoResult} from "../dto/PedidoResult";
+import {DeliveryResult} from "../dto/DeliveryResult";
 /**
  * Created by javier on 7/19/17.
  */
@@ -11,31 +13,38 @@ import {ReservaResult} from "../dto/reservaResult";
     styleUrls: ['./dashboard.component.scss'],
     providers: [AppService]
 })
-export class Dashboard implements OnInit, OnChanges{
+export class Dashboard implements OnInit{
 
-    private showPlayer: boolean = false;
-    @Input() fileToPlay:string;
+    public pedidoResult: PedidoResult[] = [];
+    public deliveryResult: DeliveryResult[] = [];
+    all: string = 'all';
 
-    public reservaResult: ReservaResult[] = [];
-
-    constructor(){}
+    constructor(private appService: AppService){}
 
     ngOnInit(){
-        if (this.fileToPlay != '') {
-            this.showPlayer = true;
-        }
+        this.getPedido();
+        this.getDelivery();
 
-        /*var audio = new Audio();
-        audio.src = "http://remote.address.com/example.mp3";
-        audio.load();
-        audio.play();*/
     }
 
-    ngOnChanges(changes: {[propKey: string]: SimpleChange}){
-
-        if(changes['fileToPlay'].previousValue !== changes['fileToPlay'].currentValue && changes['fileToPlay'].currentValue !== '') {
-            this.showPlayer = false;
-            setTimeout(() => this.showPlayer = true, 0);
-        }
+    getPedido(){
+        this.appService.getTodoPedido(this.all).subscribe(
+            (data:any) => {
+                this.pedidoResult = data;
+            },
+            error => {
+                /*this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});*/
+            }
+        );
+    }
+    getDelivery(){
+        this.appService.getTodoDelivery(this.all).subscribe(
+            (data:any) => {
+                this.deliveryResult = data;
+            },
+            error => {
+                /*this.msgs.push({severity:'error', summary:'Error Message', detail:error.error});*/
+            }
+        );
     }
 }
