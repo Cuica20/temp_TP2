@@ -45,6 +45,10 @@ export const routes: Routes = [
             {
                 path: 'dashboard',
                 loadChildren: 'app/+dashboard/dashboard.module#DashboardModule'
+            },
+            {
+                path: 'dashboardDetalle',
+                loadChildren: 'app/+dashboardDetalle/dashboard.detalle.module#DashboardDetalleModule'
             }
         ]
     },

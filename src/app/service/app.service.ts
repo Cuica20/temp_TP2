@@ -10,6 +10,7 @@ import {Cliente} from "../dto/Cliente";
 import {Mesa} from "../dto/Mesa";
 import {PedidoResult} from "../dto/PedidoResult";
 import {DeliveryResult} from "../dto/DeliveryResult";
+import {PedidoDetalle} from "../dto/PedidoDetalle";
 /**
  * Created by javier on 7/16/17.
  */
@@ -32,6 +33,16 @@ export class AppService {
 
         return this.http.post(url, JSON.stringify(code), {headers: header})
             .map(res => <Reserva> res.json())
+            .catch(this.handleError);
+    }
+
+    public obtenerPedidoDetalleById(code: any){
+
+        let url = 'http://'+this.localhost+':'+ this.port +'/reserva/obtenerPedidoDetalleById';
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        return this.http.post(url, JSON.stringify(code), {headers: header})
+            .map(res => <PedidoDetalle[]> res.json())
             .catch(this.handleError);
     }
 

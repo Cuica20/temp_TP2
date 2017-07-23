@@ -29,7 +29,6 @@ export class ReservaComponent implements OnInit,OnDestroy {
               private confirmationService: ConfirmationService) { }
 
     ngOnInit() {
-debugger;
       let dniObject = JSON.parse(sessionStorage.getItem('idDetalleReserva'));
       this.isNew = JSON.parse(sessionStorage.getItem('isNew'));
 
@@ -39,7 +38,6 @@ debugger;
           this.reservaResult = new Reserva();
           this.reservaResult.tipo_reserva = 'Normal';
           this.reservaResult.nombre_local = 'Angamos';
-          //this.showMesasDisponibles();
       }
 
     }

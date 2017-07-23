@@ -21,21 +21,24 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>Ubicacion</th>
+                                    <th></th>
                                     <th>DNI</th>
                                     <th>Estado</th>
-                                    <th>Fecha</th>
+                                    <th>Fecha Delivery</th>
                                     <th>Hora Estimada</th>
                                     <th>C&oacute;digo Carta</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr *ngFor="let asset of deliveryResult">
-                                    <td>{{asset.ubicacion_deliv}}</td>
+                                    <td class="text-center" width="40">
+                                        <a href="javascript:void(0)" class="link" (click)="idDetalleGoodleMap(asset)">
+                                            <span class="fa fa-eye"></span></a>
+                                    </td>
                                     <td>{{asset.dni}}</td>
                                     <td>{{asset.estado_deliv}}</td>
                                     <td>{{asset.fecha_deliv}}</td>
-                                    <td>{{asset.horaEstimada_deliv}}</td>
+                                    <td>{{asset.horaestimada_deliv}}</td>
                                     <td>{{asset.cod_carta_deliv}}</td>
                                 </tr>
                                 </tbody>
@@ -59,7 +62,7 @@
                                 <tbody>
                                 <tr *ngFor="let asset of pedidoResult">
                                     <td class="text-center" width="40">
-                                        <a href="javascript:void(0)" class="link" (click)="irDetalle(asset)">
+                                        <a href="javascript:void(0)" class="link" (click)="irDetallePedido(asset)">
                                             <span class="fa fa-eye"></span></a>
                                     </td>
                                     <td>{{asset.id_pedido}}</td>

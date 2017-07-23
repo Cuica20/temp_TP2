@@ -1,0 +1,54 @@
+<p-growl [(value)]="msgs"></p-growl>
+<div class="consulta-creator" *ngIf="isDelivery === false">
+    <div class="consulta-creator__title">
+        <h1>
+            <img src="assets/img/pollo.svg">
+            Poller&iacute;a Pardos Chicken
+        </h1>
+    </div>
+    <div id="content" class="search-view">
+        <div class="consulta-creator">
+            <div class="smart-form">
+                <div class="row">
+                    <div class="col col-6">
+                        <label></label>
+                        <label>Detalle Delivery</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="widget-body">
+                        <div class="table-responsive col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>ID Pedido Detalle</th>
+                                    <th>C&oacute;digo Carta</th>
+                                    <th>Id Pedido</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let asset of pedidoDetalleResult">
+                                    <td>{{asset.id_pedidetalle}}</td>
+                                    <td>{{asset.cod_carta}}</td>
+                                    <td>{{asset.id_pedido}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="isDelivery === true">
+    <p-growl [value]="msgs"></p-growl>
+
+    <p-gmap #gmap [style]="{'width':'100%','height':'700px'}" [options]="options" [overlays]="overlays"
+            (onMapClick)="handleMapClick($event)" (onOverlayClick)="handleOverlayClick($event)" (onOverlayDragEnd)="handleDragEnd($event)"></p-gmap>
+    <button type="button" pButton label="Clear" icon="fa-close" (click)="clear()" style="margin-top:10px"></button>
+    <button type="button" pButton label="Zoom In" icon="fa-search-plus" (click)="zoomIn(gmap.getMap())" style="margin-top:10px"></button>
+    <button type="button" pButton label="Zoom Out" icon="fa-search-minus" (click)="zoomOut(gmap.getMap())" style="margin-top:10px"></button>
+
+</div>
+
