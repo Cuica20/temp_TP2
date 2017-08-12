@@ -32,7 +32,7 @@
                                 <tbody>
                                 <tr *ngFor="let asset of deliveryResult">
                                     <td class="text-center" width="40">
-                                        <a href="javascript:void(0)" class="link" (click)="idDetalleGoodleMap(asset)">
+                                        <a href="javascript:void(0)" class="link" (click)="idDetalleGoodleMap(asset)" *ngIf="asset.estado_deliv === 'procesado'">
                                             <span class="fa fa-eye"></span></a>
                                     </td>
                                     <td>{{asset.dni}}</td>
